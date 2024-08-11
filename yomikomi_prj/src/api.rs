@@ -29,7 +29,7 @@ pub struct ImageLinks {
 
 pub fn fetch_books(query: &str) -> Result<GoogleBooksResponse, Box<dyn Error>> {
     let url = format!(
-        "https://www.googleapis.com/books/v1/volumes?q={}",
+        "https://www.googleapis.com/books/v1/volumes?q={}&maxResults=1",
         query
     );
 
