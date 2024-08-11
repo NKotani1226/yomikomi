@@ -1,5 +1,4 @@
 mod api;
-use std::error::Error;
 use crate::api::fetch_books;
 
 fn main(){
