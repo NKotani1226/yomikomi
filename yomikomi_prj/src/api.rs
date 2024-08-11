@@ -18,6 +18,7 @@ pub struct VolumeInfo {
     pub title: String,
     pub authors: Option<Vec<String>>,
     pub description: Option<String>,
+    #[serde(alias = "imageLinks")]
     pub image_links: Option<ImageLinks>,
 }
 
