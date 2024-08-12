@@ -1,9 +1,11 @@
 use tera::{Tera, Context};
-pub fn render_page() -> Result<String, tera::Error> {
+use crate::model::GoogleBooksResponse;
+pub fn render_page(items:GoogleBooksResponse) -> Result<String, tera::Error> {
         
     let tmpl = Tera::new("templates/**/*").unwrap();
     let mut ctx = Context::new();
-    ctx.insert("title", "kingsman");
+
+    ctx.insert("items",&items);
 
     tmpl.render("index.html", &ctx) 
 }

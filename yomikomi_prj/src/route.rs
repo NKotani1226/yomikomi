@@ -17,7 +17,7 @@ async fn index() -> impl Responder {
         }
     };
 
-    let contents = render_page().expect("InternalError");
+    let contents = render_page(items).expect("InternalError");
 
     HttpResponse::Ok()
         .content_type("text/html")

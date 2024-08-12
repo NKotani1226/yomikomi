@@ -8,9 +8,14 @@
 </head>
 
 <body>
-    <h1>
-        {{title}}
-    </h1>
+    <div>
+        {% for item in items.items %}
+            <p>{{item.volume_info.title}}</p>    
+            <p>{{item.volume_info.authors}}</p>    
+            <p>{{item.volume_info.description}}</p>
+            <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
+        {% endfor %}
+    </div>
 </body>
 
 </html>
