@@ -1,4 +1,4 @@
-use yomikomi_prj::render::render_page;
+use crate::render::render_page;
 use actix_web::{get, web, HttpResponse, Responder,HttpServer, App};
 
 #[get("/")]

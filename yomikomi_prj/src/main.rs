@@ -1,7 +1,5 @@
-mod api;
-mod route;
-use crate::api::fetch_books;
-use crate::route::create_app;
+use yomikomi_prj::api::fetch_books;
+use yomikomi_prj::route::create_app;
 
 #[actix_web::main]
 pub async fn main() -> std::io::Result<()> {
