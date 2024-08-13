@@ -33,3 +33,16 @@ pub async fn create_app(addr: &str, port: u16) -> std::io::Result<()> {
     .run()
     .await
 }
+
+#[cfg(test)]
+#[allow(non_snake_case)]
+mod fetch_booksテスト {
+
+    use super::*;
+
+    #[tokio::test]
+    async fn test_fetch_books() {
+        let _items =  fetch_books("夏目漱石").await;
+        println!("{:?}",_items);
+    }
+}
