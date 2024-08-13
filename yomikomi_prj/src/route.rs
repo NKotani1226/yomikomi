@@ -5,7 +5,7 @@ use actix_web::{get, web, HttpResponse, Responder,HttpServer, App};
 #[get("/")]
 async fn index() -> impl Responder {
 
-    let query = "夏目漱石";
+    let query = "夏目";
 
     let items = 
     match fetch_books(query).await {

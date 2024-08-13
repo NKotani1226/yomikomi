@@ -8,13 +8,25 @@
 </head>
 
 <body>
-    <div>
-        {% for item in items.items %}
-            <p>{{item.volume_info.title}}</p>    
-            <p>{{item.volume_info.authors}}</p>    
-            <p>{{item.volume_info.description}}</p>
-            <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
-        {% endfor %}
+    <div class="container">
+        <ul class="books-info">
+            {% for item in items.items %}
+            <li>
+                <p class="thumbnail">
+                    <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
+                </p>
+                <p class="title">
+                    {{item.volume_info.title}}
+                </p>
+                <p class="author">
+                    {{item.volume_info.authors}}
+                </p>
+                <p class="description">
+                    {{item.volume_info.description}}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 
