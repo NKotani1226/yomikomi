@@ -13,7 +13,11 @@
             {% for item in items.items %}
             <li>
                 <p class="thumbnail">
-                    <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
+                    {% if item.volume_info.image_links.thumbnail is defined %}
+                        <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
+                    {% else %}
+                        <img src="https://placehold.jp/128x200.png" alt="Default Image">
+                    {% endif %}
                 </p>
                 <p class="title">
                     {{item.volume_info.title}}
@@ -21,9 +25,11 @@
                 <p class="author">
                     {{item.volume_info.authors}}
                 </p>
-                <p class="description">
-                    {{item.volume_info.description}}
-                </p>
+                {% if item.volume_info.description is defined %}
+                    <p class="description">
+                        {{item.volume_info.description}}
+                    </p>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

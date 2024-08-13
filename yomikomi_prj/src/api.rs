@@ -4,7 +4,7 @@ use crate::model::GoogleBooksResponse;
 
 pub async fn fetch_books(query: &str) -> Result<GoogleBooksResponse, Box<dyn Error>> {
     let url = format!(
-        "https://www.googleapis.com/books/v1/volumes?q={}&maxResults=1",
+        "https://www.googleapis.com/books/v1/volumes?q={}&maxResults=10",
         query
     );
 
