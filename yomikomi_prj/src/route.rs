@@ -1,6 +1,6 @@
 use crate::render::render_page;
 use crate::api::fetch_books;
-use actix_web::{get, web, HttpResponse, Responder,HttpServer, App};
+use actix_web::{get, HttpResponse, Responder,HttpServer, App};
 
 #[get("/")]
 async fn index() -> impl Responder {
@@ -12,7 +12,7 @@ async fn index() -> impl Responder {
         Ok(response) => {
             response
         }
-        Err(e) => {
+        Err(_e) => {
             return HttpResponse::NotFound().finish()
         }
     };
