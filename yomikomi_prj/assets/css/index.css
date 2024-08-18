@@ -2,4 +2,27 @@
     max-width: 1080px;
     margin: auto;
     padding: 0 20px;
+    margin-top: 1em;
+}
+
+ul.books-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1em -1em 0;
+}
+
+ul.books-info li {
+    width: 50%;
+    padding: 1em 1em;
+}
+
+ul.books-info li .list-contents {
+    border: 1px solid;
+    height: 100%;
+    padding: 2em;
+}
+
+ul.books-info li .list-contents .thumbnail{
+    display: flex;
+    justify-content: center;
 }

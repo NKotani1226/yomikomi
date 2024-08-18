@@ -14,24 +14,26 @@
         <ul class="books-info">
             {% for item in items.items %}
             <li>
-                <p class="thumbnail">
-                    {% if item.volume_info.image_links.thumbnail is defined %}
-                        <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
-                    {% else %}
-                        <img src="https://placehold.jp/128x200.png" alt="Default Image">
-                    {% endif %}
-                </p>
-                <p class="title">
-                    {{item.volume_info.title}}
-                </p>
-                <p class="author">
-                    {{item.volume_info.authors}}
-                </p>
-                {% if item.volume_info.description is defined %}
-                    <p class="description">
-                        {{item.volume_info.description}}
+                <div class="list-contents">
+                    <p class="thumbnail">
+                        {% if item.volume_info.image_links.thumbnail is defined %}
+                            <img src="{{item.volume_info.image_links.thumbnail}}" alt="{{item.volume_info.title}}">
+                        {% else %}
+                            <img src="https://placehold.jp/128x200.png" alt="Default Image">
+                        {% endif %}
                     </p>
-                {% endif %}
+                    <p class="title">
+                        {{item.volume_info.title}}
+                    </p>
+                    <p class="author">
+                        {{item.volume_info.authors}}
+                    </p>
+                    {% if item.volume_info.description is defined %}
+                        <p class="description">
+                            {{item.volume_info.description}}
+                        </p>
+                    {% endif %}    
+                </div>
             </li>
             {% endfor %}
         </ul>
