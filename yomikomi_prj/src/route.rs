@@ -1,6 +1,7 @@
 use crate::render::render_page;
 use crate::api::fetch_books;
 use actix_web::{get,web, HttpResponse, Responder,HttpServer, App};
+use actix_files as fs;
 
 #[get("/")]
 async fn index() -> impl Responder {
@@ -50,6 +51,7 @@ async fn page_index(page_no: web::Path<u32>) -> impl Responder {
 pub async fn create_app(addr: &str, port: u16) -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
+            .service(fs::Files::new("/assets","assets/").show_files_listing())
             .service(index)
             .service(page_index)
     })
