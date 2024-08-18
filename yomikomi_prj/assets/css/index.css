@@ -1,7 +1,7 @@
 .container {
     max-width: 1080px;
     margin: auto;
-    padding: 0 20px;
+    padding: 0 20px 3em;
     margin-top: 1em;
 }
 
@@ -25,4 +25,50 @@ ul.books-info li .list-contents {
 ul.books-info li .list-contents .thumbnail{
     display: flex;
     justify-content: center;
+}
+
+
+.pagenation-contents {
+    display: flex;
+    justify-content: center;
+}
+
+.pagenation-contents .pagenation {
+    display: flex;
+    margin: 0 -0.5em;
+    position: relative;
+}
+
+.pagenation-contents .pagenation li {
+    padding: 0 0.5em;
+}
+
+.ch-button a{
+    display: inline-block;
+    position: relative;
+}
+
+.ch-button.before a::before,
+.ch-button.after a::after{
+    content: "";
+    position: absolute;
+    display: inline-block;
+	box-sizing: border-box;
+	width: 8px;
+	height: 8px;
+    left: 0px;
+    top: -9px;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	margin: auto;
+}
+
+.ch-button.after a::after{
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.ch-button.before a::before{
+	-webkit-transform: rotate(225deg);
+	transform: rotate(225deg);
 }
