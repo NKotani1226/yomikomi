@@ -1,5 +1,6 @@
 use crate::api::fetch_books;
 use actix_web::{get,web, HttpResponse, Responder,HttpServer, App};
+use serde_json::json;
 
 #[get("/")]
 async fn index() -> impl Responder {
@@ -44,8 +45,13 @@ pub async fn create_app(addr: &str, port: u16) -> std::io::Result<()> {
         App::new()
             .service(index)
             .service(page_index)
+            .route("/api/data",web::get().to(get_data))
     })
     .bind((addr, port))?
     .run()
     .await
+}
+
+async fn get_data() -> impl Responder {
+    web::Json(json!({ "message": "Hello from Rust backend!" }))
 }
