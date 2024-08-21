@@ -23,3 +23,8 @@ pub struct VolumeInfo {
 pub struct ImageLinks {
     pub thumbnail: Option<String>,
 }
+
+#[derive(Serialize)]
+pub struct ErrorResponse {
+    pub error: String,
+}

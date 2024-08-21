@@ -1,8 +1,8 @@
 use reqwest::Client;
-use std::error::Error;
 use crate::model::GoogleBooksResponse;
+use crate::model::ErrorResponse;
 
-pub async fn fetch_books(query: &str,page_no:u32) -> Result<GoogleBooksResponse, Box<dyn Error>> {
+pub async fn fetch_books(query: &str,page_no:u32) -> Result<GoogleBooksResponse, ErrorResponse> {
     let url = format!(
         "https://www.googleapis.com/books/v1/volumes?q={}&startIndex={}&orderBy=relevance",
         query,
@@ -10,7 +10,14 @@ pub async fn fetch_books(query: &str,page_no:u32) -> Result<GoogleBooksResponse,
     );
 
     let client = Client::new();
-    let response = client.get(&url).send().await?.json::<GoogleBooksResponse>().await?;
+
+    let response = client.get(&url).send().await.map_err(|e| ErrorResponse {
+        error: e.to_string(),
+    })?;
+
+    let google_books_response: GoogleBooksResponse = response.json().await.map_err(|e| ErrorResponse {
+        error: e.to_string(),
+    })?;
     
-    Ok(response)
+    Ok(google_books_response)
 }
