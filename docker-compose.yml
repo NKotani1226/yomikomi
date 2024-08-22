@@ -1,8 +1,8 @@
 services:
   server:
     build: 
-      context: .
-      dockerfile: yomikomi_prj/Dockerfile
+      context: ./yomikomi_prj
+      dockerfile: Dockerfile
     ports:
     - "8080:8080"
     volumes:
