@@ -1,11 +1,25 @@
+volumes:
+    node-modules:
 services:
   server:
     build: 
       context: ./yomikomi_prj
       dockerfile: Dockerfile
     ports:
-    - "8080:8080"
+      - "8080:8080"
     volumes:
       - .:/usr/src/app
     stdin_open: true
     tty: true
+  front:
+    build:
+      context: ./yomikomi_front_prj
+      dockerfile: Dockerfile
+    ports:
+      - "12000:3000"
+    environment:
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./yomikomi_front_prj:/usr/src/front_app
+      - node-modules:/usr/src/front_app/node_modules
+    command: npm run dev
