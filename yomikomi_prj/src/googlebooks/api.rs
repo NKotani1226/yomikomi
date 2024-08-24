@@ -1,6 +1,6 @@
 use reqwest::Client;
-use crate::model::GoogleBooksResponse;
-use crate::model::ErrorResponse;
+use crate::googlebooks::model::GoogleBooksResponse;
+use crate::googlebooks::model::ErrorResponse;
 
 pub async fn fetch_books(query: &str,page_no:u32) -> Result<GoogleBooksResponse, ErrorResponse> {
     let url = format!(
