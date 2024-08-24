@@ -1,4 +1,4 @@
-use yomikomi_prj::route::create_app;
+use yomikomi_prj::googlebooks::route::create_app;
 
 #[actix_web::main]
 pub async fn main() -> std::io::Result<()> {
