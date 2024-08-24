@@ -1,9 +1,17 @@
 use crate::googlebooks::api::fetch_books;
 use actix_web::{web, Responder,HttpServer, App};
-
+use actix_cors::Cors;
 pub async fn create_app(addr: &str, port: u16) -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
+            .wrap(
+                Cors::default()
+                    .allowed_origin("http://localhost:12000") // フロントエンドのURLを許可
+                    .allowed_methods(vec!["GET", "POST"])
+                    .allowed_headers(vec![actix_web::http::header::AUTHORIZATION, actix_web::http::header::ACCEPT])
+                    .allowed_header(actix_web::http::header::CONTENT_TYPE)
+                    .max_age(3600)
+            )
             .route("/page/{page_no}",web::get().to(page_index))
             .route("/",web::get().to(index))
     })
